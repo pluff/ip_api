@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.2.0'
 gem 'rails-api'
 gem 'pg'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'nbrb-api', git: 'https://github.com/pluff/nbrb-api.git'
+
+gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers.git'
 
 group :test, :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

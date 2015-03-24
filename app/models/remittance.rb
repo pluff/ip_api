@@ -6,4 +6,14 @@ class Remittance < ActiveRecord::Base
   belongs_to :ledger
 
   validates :ledger, presence: true
+
+  def taxes
+    tax = {
+      tax_rate: 0.05,
+      official_rate: OfficialRates[transferred_at][currency]
+    }
+    tax[:tax_base] = amount * tax[:official_rate]
+    tax[:tax_amount] = tax[:tax_base] * tax[:tax_rate]
+    tax
+  end
 end

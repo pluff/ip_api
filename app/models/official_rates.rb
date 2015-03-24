@@ -2,6 +2,7 @@ module OfficialRates
   LOCAL_CURRENCY = Currencies::BYR
   class << self
     def [](date)
+      @rates ||= {}
       date = date.to_date
       unless @rates[date]
         @rates[date] = {}

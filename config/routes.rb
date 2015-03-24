@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  scope :api do
+    scope :v1 do
+      resources :ledgers, only: [:create, :show, :update, :destroy] do
+        resources :remittances, only: [:create, :update, :destroy]
+        resources :exchanges, only: [:create, :update, :destroy]
+      end
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
