@@ -1,6 +1,6 @@
 class Ledger < ActiveRecord::Base
-  has_many :exchanges
-  has_many :remittances
+  has_many :exchanges, dependent: :destroy
+  has_many :remittances, dependent: :destroy
 
   scope :accessible, lambda { where.not(access_token: nil) }
 
