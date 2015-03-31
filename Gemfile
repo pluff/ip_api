@@ -25,3 +25,14 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'database_cleaner'
 end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+end
+
+group :production do
+  gem 'unicorn'
+end
