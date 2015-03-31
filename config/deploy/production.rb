@@ -3,6 +3,20 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
+set :repo_url, 'git@github.com:pluff/ip_api.git'
+
+application = '72220'
+set :application, application
+
+set :rvm_type, :user
+set :rvm_ruby_version, '2.1.2'
+
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, "/var/www/#{application}"
+
 server '93.125.31.172', user: 'deployer', roles: %w{web app db}
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value

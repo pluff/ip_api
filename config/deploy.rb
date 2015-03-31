@@ -1,20 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :repo_url, 'git@github.com:pluff/ip_api.git'
-
-application = '72220'
-set :application, application
-
-set :rvm_type, :user
-set :rvm_ruby_version, '2.1.2'
-
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
-# Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/var/www/72220'
-
 # Default value for :scm is :git
 # set :scm, :git
 
@@ -90,7 +76,7 @@ namespace :deploy do
 
   desc 'Create symlink'
   task :symlink do
-    on roles(:all) do
+    on roles(:db, :app) do
       execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
       execute "ln -s #{shared_path}/.ruby-version #{release_path}/.ruby-version"
       execute "ln -s #{shared_path}/.ruby-gemset #{release_path}/.ruby-gemset"
