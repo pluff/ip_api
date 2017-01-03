@@ -21,7 +21,7 @@ module Import
       end
 
       def add_exchange_to_ledger(rhash, ledger)
-        rate = /курс (?<rate>\d+\.\d*)/.match(rhash['Nazn'])[:rate].to_f
+        rate = /курс(у?) (?<rate>\d+\.\d*)/i.match(rhash['Nazn'])[:rate].to_f
         ledger.exchanges.create!(
           from_currency: 'USD',
           to_currency: 'BYR',
